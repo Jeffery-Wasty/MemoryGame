@@ -13,7 +13,7 @@ var stuff = () => {
 };
 
 var flipTile = tile => {
-  var audio = new Audio('flip.mp3');
+  var audio = new Audio('../sounds/flip.mp3');
   audio.play();
   if (!tile.classList.contains('flip')) {
     tile.classList.add('flip');
@@ -24,7 +24,7 @@ var flipTile = tile => {
 
 var unflipAll = () => {
   let tileList = document.getElementsByClassName('game-tile');
-  var audio = new Audio('flip.mp3');
+  var audio = new Audio('../sounds/flip.mp3');
   for (let i = 0; i < tileList.length; ++i) {
     if (tileList[i].classList.contains('flip')) {
       tileList[i].classList.remove('flip');
