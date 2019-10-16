@@ -1,0 +1,28 @@
+#game-board {
+  background-color: rgb(43, 31, 26);
+  width: 200px;
+  height: 200px;
+  padding: 10px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  transition: transform 1.5s ease;
+}
+
+#game-board.flip {
+  transform: rotateZ(90deg);
+}
+
+.game-tile {
+  background-color: rgb(103, 77, 69);
+  width: 50px;
+  height: 50px;
+  margin: 2px;
+  position: relative;
+  transition: all 0.5s ease;
+}
+
+.game-tile.flip {
+  background-color: rgb(70, 154, 170);
+  transform: rotateX(180deg);
+}
