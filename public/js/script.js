@@ -23,20 +23,21 @@ const flipTile = tile => {
   }
 };
 
-const increaseScore = () => {
+const changeScore = change => {
   const scoreNode = document.getElementById('score');
   let score = parseInt(scoreNode.textContent);
-  score += 1;
+  score += change;
   scoreNode.textContent = score;
 };
 
 const isCorrect = tile => {
   if (tilesToPick.includes(parseInt(tile.id))) {
     tilesToPick.splice(tilesToPick.indexOf(parseInt(tile.id)), 1);
-    increaseScore();
+    changeScore(1);
   } else {
     new Audio('../media/sounds/wrong.mp3').play();
     tile.classList.add('incorrect');
+    changeScore(-1);
   }
 };
 

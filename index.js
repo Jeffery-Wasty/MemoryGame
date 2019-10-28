@@ -4,10 +4,13 @@ let bodyParser = require('body-parser');
 const app = express();
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/comp3717_assignment1', {
-  useUnifiedTopology: true,
-  useNewUrlParser: true
-});
+mongoose.connect(
+  'mongodb+srv://jeffw:uP3DZBaGTkTVg8N@cluster0-eqnvp.mongodb.net/test?retryWrites=true&w=majority',
+  {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+  }
+);
 
 let routes = require('./routes/game');
 
