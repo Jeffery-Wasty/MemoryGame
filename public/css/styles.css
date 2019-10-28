@@ -11,7 +11,7 @@ body {
   margin: auto;
   display: flex;
   flex-wrap: wrap;
-  transition: transform 1.5s ease;
+  transition: transform 1s ease;
 }
 
 #game-board.hidden {
@@ -92,6 +92,58 @@ body {
   animation-iteration-count: 1;
   animation-timing-function: linear;
   animation-direction: alternate;
+}
+
+.summary-box {
+  display: block;
+  padding: 0px 20px 20px 20px;
+  margin: 10% auto 0 auto;
+  width: 50%;
+  font-weight: 200;
+}
+
+#summary-title {
+  text-align: center;
+  font-size: 70px;
+  color: white;
+  margin: 0 0 2% 0;
+}
+
+#summary-form {
+  color: white;
+  font-size: 30px;
+  width: 50%;
+  margin: auto;
+}
+
+#score-result {
+  margin: 0 0 5% 0;
+  width: 100%;
+}
+
+#score-result-node {
+  display: inline;
+  margin-left: 20%;
+}
+
+#name-field {
+  width: 50%;
+  height: 50%;
+  background-color: #dead7c;
+  border-color: black;
+  margin-left: 20%;
+}
+
+.button-bar {
+  text-align: center;
+}
+
+#continue-button {
+  margin: 5% 5% 0 0;
+}
+
+#add-button {
+  margin: 5% 0 0 5%;
 }
 
 @-webkit-keyframes grow {

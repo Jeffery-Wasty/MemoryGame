@@ -7,18 +7,55 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
-    <form class="product-form" action="/score/add" method="POST">
+    <script src="js/summary-script.js" async defer></script>
+    <div class="summary-box">
+      <div id="summary-title">Rotation Matrix</div>
+      <form
+        class="product-form"
+        id="summary-form"
+        action="/score/add"
+        method="POST"
+      >
+        <div id="score-result">
+          Score
+          <div id="score-result-node">10</div>
+        </div>
+        <label for="name">Name</label>
+        <input
+          class="form-fields input"
+          type="text"
+          id="name-field"
+          name="name"
+        />
+      </form>
+      <div class="button-bar">
+        <button type="text" id="continue-button" class="btn btn-primary btn-lg">
+          RESTART
+        </button>
+        <button type="submit" id="add-button" class="btn btn-secondary btn-lg">
+          Submit Score
+        </button>
+      </div>
+    </div>
+    <div class="artist-list" id="artist-list"></div>
+    <!-- <form class="product-form" action="/score/add" method="POST">
       <div class="form-control">
-        <label for="title">Name</label>
-        <input type="text" name="name" value="Josh" />
+        <label for="title" class="form-labels">Name</label>
+        <input type="text" name="name" />
       </div>
       <div class="form-control">
-        <label for="title">Score</label>
-        <input type="text" name="score" value="1" />
+        <label for="title" class="form-labels">Score</label>
+        <input type="text" name="score" />
         <button class="btn" type="submit">Add Score</button>
       </div>
-    </form>
+    </form> -->
   </body>
 </html>
