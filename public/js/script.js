@@ -5,7 +5,7 @@ window.onload = () => {
   draw(5, 5);
 };
 
-const stuff = () => {
+const start = () => {
   unflipAll();
   setTimeout(patternPick, 1000);
   setTimeout(unflipAll, 2000);
@@ -40,7 +40,7 @@ const isCorrect = tile => {
 
 const completeRound = () => {
   if (tilesToPick.length == 0) {
-    setTimeout(stuff, 500);
+    setTimeout(start, 500);
   }
 };
 
