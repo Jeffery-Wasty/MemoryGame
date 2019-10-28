@@ -2,14 +2,16 @@ var firstTile;
 var tilesToPick = [];
 
 window.onload = () => {
+  document.getElementById('game-board').classList.remove('hidden');
   draw(5, 5);
 };
 
 const start = () => {
-  unflipAll();
-  setTimeout(patternPick, 1000);
-  setTimeout(unflipAll, 2000);
-  setTimeout(turnBoard, 3000);
+  blankTiles();
+  setTimeout(unflipAll, 1000);
+  setTimeout(patternPick, 2000);
+  setTimeout(unflipAll, 3000);
+  setTimeout(turnBoard, 4000);
 };
 
 const flipTile = tile => {
@@ -38,6 +40,13 @@ const isCorrect = tile => {
   }
 };
 
+const blankTiles = () => {
+  let tileList = document.getElementsByClassName('game-tile');
+  for (let i = 0; i < tileList.length; ++i) {
+    tileList[i].classList = 'game-tile start';
+  }
+};
+
 const completeRound = () => {
   if (tilesToPick.length == 0) {
     setTimeout(start, 500);
@@ -51,6 +60,7 @@ const unflipAll = () => {
       new Audio('../media/sounds/flip.mp3').play();
     }
     tileList[i].classList = 'game-tile';
+    setTimeout(500);
   }
 };
 
@@ -84,7 +94,8 @@ const draw = (x, y) => {
   for (let i = 0; i < x * y; ++i) {
     let tile = document.createElement('div');
     tile.id = i;
-    tile.classList = 'game-tile';
+    tile.classList.add('game-tile');
+    tile.classList.add('start');
     tile.onclick = function() {
       isCorrect(this);
       flipTile(this);
