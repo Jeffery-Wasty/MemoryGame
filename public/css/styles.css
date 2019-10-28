@@ -1,3 +1,8 @@
+body {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-image: url('../media/backgrounds/brown-background.jpg');
+}
+
 #game-board {
   background-color: rgb(43, 31, 26);
   width: 200px;
@@ -13,11 +18,38 @@
   transform: rotateZ(90deg);
 }
 
+#nav {
+  overflow: hidden;
+  padding: 0px 20px 10px 20px;
+}
+
+#nav-right {
+  background-color: transparent;
+  float: right;
+}
+
+.nav-sub {
+  color: rgb(103, 77, 69);
+  background-color: lightgray;
+  float: left;
+  text-align: center;
+  padding: 12px;
+  margin-left: 2px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 15px;
+}
+
+.nav-sub div {
+  float: right;
+}
+
 .game-tile {
   background-color: rgb(103, 77, 69);
-  width: 50px;
-  height: 50px;
-  margin: 2px;
+  width: 100px;
+  height: 100px;
+  margin: 4px;
   position: relative;
   transition: all 0.5s ease;
 }
@@ -25,4 +57,56 @@
 .game-tile.flip {
   background-color: rgb(70, 154, 170);
   transform: rotateX(180deg);
+}
+
+.game-tile.incorrect {
+  background-color: #ff3939;
+  background-image: url('../media/icons/incorrect.png');
+  background-position: center;
+  background-size: cover;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-duration: 1s;
+  -moz-transition-property: -moz-transform;
+  -moz-transition-duration: 1s;
+  -webkit-animation-name: grow;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: grow;
+  -moz-animation-duration: 2s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+
+  transition-property: -moz-transform;
+  transition-duration: 1s;
+  animation-name: grow;
+  animation-duration: 0.2s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-direction: alternate;
+}
+
+@-webkit-keyframes grow {
+  from {
+    -webkit-transform: scale(1);
+  }
+  to {
+    -webkit-transform: scale(1.5);
+  }
+}
+@-moz-keyframes grow {
+  from {
+    -moz-transform: scale(1);
+  }
+  to {
+    -moz-transform: scale(1.5);
+  }
+}
+@keyframes grow {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.5);
+  }
 }

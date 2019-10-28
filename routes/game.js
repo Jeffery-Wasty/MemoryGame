@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const path = require('path');
+const controller = require('../controllers/controller');
 
-router.get('/', (req, res) => {
-  res.render(path.join(__dirname, '../views', 'index.html'));
-});
+router
+  .get('/', controller.game)
+  .get('/summary', controller.summary)
+  .get('/leaderboard', controller.leaderboard)
+  .post('/score/add', controller.postAddScore);
 
 module.exports = router;
