@@ -7,11 +7,55 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <script src="js/script.js" async defer></script>
     <div id="main-container">
       <div id="nav">
+        <div id="terminate-box">
+          <button onclick="prompt()">TERMINATE</button>
+        </div>
+        <div id="prompt-modal" class="modal" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Are you sure you want to terminate?</h5>
+                <button
+                  type="button"
+                  class="close"
+                  onclick="prompt()"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  onclick="prompt()"
+                  class="btn btn-danger"
+                  data-dismiss="modal"
+                >
+                  No
+                </button>
+                <button
+                  type="button"
+                  onclick="summary()"
+                  class="btn btn-success"
+                >
+                  Yes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
         <div id="nav-right">
           <div class="nav-sub" id="tile-count-node">
             TILES &nbsp;&nbsp;

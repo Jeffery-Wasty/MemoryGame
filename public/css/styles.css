@@ -3,6 +3,10 @@ body {
   background-image: url('../media/backgrounds/brown-background.jpg');
 }
 
+#prompt-modal {
+  display: none;
+}
+
 #game-board {
   background-color: rgb(43, 31, 26);
   width: 200px;
@@ -53,7 +57,7 @@ body {
   background-color: rgb(103, 77, 69);
   width: 100px;
   height: 100px;
-  margin: 4px;
+  margin: 5px;
   position: relative;
   transition: all 0.5s ease;
 }
@@ -94,58 +98,6 @@ body {
   animation-direction: alternate;
 }
 
-.summary-box {
-  display: block;
-  padding: 0px 20px 20px 20px;
-  margin: 10% auto 0 auto;
-  width: 50%;
-  font-weight: 200;
-}
-
-#summary-title {
-  text-align: center;
-  font-size: 70px;
-  color: white;
-  margin: 0 0 2% 0;
-}
-
-#summary-form {
-  color: white;
-  font-size: 30px;
-  width: 50%;
-  margin: auto;
-}
-
-#score-result {
-  margin: 0 0 5% 0;
-  width: 100%;
-}
-
-#score-result-node {
-  display: inline;
-  margin-left: 20%;
-}
-
-#name-field {
-  width: 50%;
-  height: 50%;
-  background-color: #dead7c;
-  border-color: black;
-  margin-left: 20%;
-}
-
-.button-bar {
-  text-align: center;
-}
-
-#continue-button {
-  margin: 5% 5% 0 0;
-}
-
-#add-button {
-  margin: 5% 0 0 5%;
-}
-
 @-webkit-keyframes grow {
   from {
     -webkit-transform: scale(1);
@@ -169,4 +121,57 @@ body {
   to {
     transform: scale(1.5);
   }
+}
+
+/* Summary Page */
+
+.summary-box {
+  display: block;
+  color: white;
+  padding: 0px 20px 20px 20px;
+  margin: 10% auto 0 auto;
+  width: 50%;
+  font-weight: 200;
+}
+
+#summary-title {
+  text-align: center;
+  font-size: 70px;
+  margin: 0 0 2% 0;
+}
+
+#summary-form {
+  font-size: 30px;
+  width: 50%;
+  margin: auto;
+}
+
+#score-result {
+  margin: 0 0 5% 0;
+  width: 100%;
+}
+
+#score-result-node {
+  display: inline;
+  margin: 0 0 0 20%;
+}
+
+#name-field {
+  width: 50%;
+  height: 50%;
+  background-color: #dead7c;
+  border-color: black;
+  margin: 0 0 0 20%;
+}
+
+.button-bar {
+  text-align: center;
+}
+
+#continue-button {
+  margin: 5% 5% 0 0;
+}
+
+#add-button {
+  margin: 5% 0 0 5%;
 }

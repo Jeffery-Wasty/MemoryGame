@@ -1,9 +1,16 @@
-var firstTile;
-var tilesToPick = [];
+const tilesToPick = [];
 
 window.onload = () => {
   document.getElementById('game-board').classList.remove('hidden');
   draw(5, 5);
+};
+
+const prompt = () => {
+  let prompt_modal = document.getElementById('prompt-modal');
+  prompt_modal.style.display =
+    !prompt_modal.style.display || prompt_modal.style.display == 'none'
+      ? 'block'
+      : 'none';
 };
 
 const start = () => {
@@ -12,6 +19,13 @@ const start = () => {
   setTimeout(patternPick, 2000);
   setTimeout(unflipAll, 3000);
   setTimeout(turnBoard, 4000);
+};
+
+const summary = () => {
+  const scoreNode = document.getElementById('score');
+  let score = parseInt(scoreNode.textContent);
+  window.localStorage.setItem('score', score);
+  window.location.href = '/summary';
 };
 
 const flipTile = tile => {
@@ -25,9 +39,14 @@ const flipTile = tile => {
 
 const changeScore = change => {
   const scoreNode = document.getElementById('score');
+
   let score = parseInt(scoreNode.textContent);
   score += change;
   scoreNode.textContent = score;
+  if (score <= 0) {
+    window.localStorage.setItem('score', score);
+    window.location.href = '/summary';
+  }
 };
 
 const isCorrect = tile => {
@@ -75,7 +94,7 @@ const turnBoard = () => {
 };
 
 const patternPick = () => {
-  tilesToPick = [];
+  tilesToPick.length = 0;
   let tileList = document.getElementsByClassName('game-tile');
   for (let i = 0; i < 3; ++i) {
     let index = Math.floor(Math.random() * tileList.length);
@@ -90,8 +109,8 @@ const patternPick = () => {
 const draw = (x, y) => {
   let gameBoard = document.getElementById('game-board');
   gameBoard.innerHTML = '';
-  gameBoard.style.width = `${108 * x}px`;
-  gameBoard.style.height = `${108 * y}px`;
+  gameBoard.style.width = `${115 * x}px`;
+  gameBoard.style.height = `${115 * y}px`;
   for (let i = 0; i < x * y; ++i) {
     let tile = document.createElement('div');
     tile.id = i;
