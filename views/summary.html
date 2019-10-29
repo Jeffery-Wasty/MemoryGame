@@ -15,6 +15,7 @@
     />
   </head>
   <body>
+    <script src="constants/script_constants.js" async defer></script>
     <script src="js/summary-script.js" async defer></script>
     <div class="summary-box">
       <div id="summary-title">Rotation Matrix</div>
@@ -37,10 +38,19 @@
         />
       </form>
       <div class="button-bar">
-        <button type="text" id="continue-button" class="btn btn-primary btn-lg">
+        <button
+          type="text"
+          id="restart-button"
+          class="btn btn-primary btn-lg"
+          onclick="redirect()"
+        >
           RESTART
         </button>
-        <button type="submit" id="add-button" class="btn btn-secondary btn-lg">
+        <button
+          type="submit"
+          id="submit-button"
+          class="btn btn-secondary btn-lg"
+        >
           Submit Score
         </button>
       </div>

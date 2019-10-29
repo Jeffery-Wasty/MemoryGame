@@ -7,3 +7,7 @@ const readScore = () => {
   let score = window.localStorage.getItem('score');
   scoreNodeSummary.textContent = score;
 };
+
+const redirect = () => {
+  window.location.href = INDEX;
+};

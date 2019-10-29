@@ -31,8 +31,16 @@ body.blur {
   transform: translateX(200%);
 }
 
-#game-board.flip {
+#game-board.ninety {
   transform: rotateZ(90deg);
+}
+
+#game-board.one-eighty {
+  transform: rotateZ(180deg);
+}
+
+#game-board.two-seventy {
+  transform: rotateZ(270deg);
 }
 
 #nav {
@@ -75,11 +83,19 @@ body.blur {
   height: 75px;
   margin: 3px;
   position: relative;
-  transition: all 0.5s ease;
+  transition: all 1s ease;
 }
 
-.game-tile.start {
+.game-tile.flip-ninety {
   transform: rotateX(90deg);
+}
+
+.game-tile.flip-one-eighty {
+  transform: rotateX(180deg);
+}
+
+.game-tile.flip-two-seventy {
+  transform: rotateX(270deg);
 }
 
 .game-tile.flip {
@@ -184,10 +200,10 @@ body.blur {
   text-align: center;
 }
 
-#continue-button {
+#restart-button {
   margin: 5% 5% 0 0;
 }
 
-#add-button {
+#submit-button {
   margin: 5% 0 0 5%;
 }
