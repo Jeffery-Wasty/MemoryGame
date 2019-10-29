@@ -15,11 +15,18 @@
     />
   </head>
   <body>
+    <script src="constants/script_constants.js" async defer></script>
     <script src="js/script.js" async defer></script>
     <div id="main-container">
       <div id="nav">
-        <div id="terminate-box">
-          <button onclick="prompt()">TERMINATE</button>
+        <div id="nav-left">
+          <button
+            id="terminate-button"
+            class="btn btn-danger"
+            onclick="promptModal('prompt-modal')"
+          >
+            TERMINATE
+          </button>
         </div>
         <div id="prompt-modal" class="modal" tabindex="-1" role="dialog">
           <div class="modal-dialog" role="document">
@@ -29,7 +36,7 @@
                 <button
                   type="button"
                   class="close"
-                  onclick="prompt()"
+                  onclick="promptModal('prompt-modal')"
                   data-dismiss="modal"
                   aria-label="Close"
                 >
@@ -39,7 +46,7 @@
               <div class="modal-footer">
                 <button
                   type="button"
-                  onclick="prompt()"
+                  onclick="promptModal('prompt-modal')"
                   class="btn btn-danger"
                   data-dismiss="modal"
                 >
@@ -70,6 +77,25 @@
       </div>
       <div id="game-board" class="hidden"></div>
     </div>
-    <button onclick="start()">PRESS ME</button>
+    <div id="start-screen">
+      <div id="start-modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Welcome to the Rotation Matrix Game!</h5>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                onclick="startModal('start-modal'), start(4,5)"
+                class="btn btn-success"
+              >
+                Play
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

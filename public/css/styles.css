@@ -3,8 +3,17 @@ body {
   background-image: url('../media/backgrounds/brown-background.jpg');
 }
 
+body.blur {
+  /* -webkit-filter: blur(5px) grayscale(90%); */
+}
+
 #prompt-modal {
   display: none;
+  filter: none;
+}
+
+#start-modal {
+  display: block;
 }
 
 #game-board {
@@ -15,7 +24,7 @@ body {
   margin: auto;
   display: flex;
   flex-wrap: wrap;
-  transition: transform 1s ease;
+  transition: all 1s ease;
 }
 
 #game-board.hidden {
@@ -28,18 +37,25 @@ body {
 
 #nav {
   overflow: hidden;
+  display: flex;
+  width: 70%;
+  margin: 5% auto 0 auto;
   padding: 0px 20px 10px 20px;
 }
 
 #nav-right {
   background-color: transparent;
-  float: right;
+  flex: 1;
+}
+
+#nav-left {
+  flex: 1;
 }
 
 .nav-sub {
   color: rgb(103, 77, 69);
   background-color: lightgray;
-  float: left;
+  float: right;
   text-align: center;
   padding: 12px;
   margin-left: 2px;
@@ -55,9 +71,9 @@ body {
 
 .game-tile {
   background-color: rgb(103, 77, 69);
-  width: 100px;
-  height: 100px;
-  margin: 5px;
+  width: 75px;
+  height: 75px;
+  margin: 3px;
   position: relative;
   transition: all 0.5s ease;
 }

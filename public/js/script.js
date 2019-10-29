@@ -1,51 +1,57 @@
+const flipSound = '../media/sounds/flip.mp3';
 const tilesToPick = [];
 
 window.onload = () => {
-  document.getElementById('game-board').classList.remove('hidden');
-  draw(5, 5);
+  document.getElementById(GAME_BOARD).classList.remove(HIDDEN);
 };
 
-const prompt = () => {
-  let prompt_modal = document.getElementById('prompt-modal');
-  prompt_modal.style.display =
-    !prompt_modal.style.display || prompt_modal.style.display == 'none'
-      ? 'block'
-      : 'none';
+const promptModal = mod => {
+  let modal = document.getElementById(mod);
+  modal.style.display =
+    !modal.style.display || modal.style.display == NONE ? BLOCK : NONE;
 };
 
-const start = () => {
-  blankTiles();
+const startModal = mod => {
+  let modal = document.getElementById(mod);
+  modal.style.display =
+    !modal.style.display || modal.style.display == BLOCK ? NONE : BLOCK;
+};
+
+const start = (x, y) => {
+  draw(x, y);
   setTimeout(unflipAll, 1000);
-  setTimeout(patternPick, 2000);
+  setTimeout(() => {
+    patternPick(3);
+  }, 2000);
   setTimeout(unflipAll, 3000);
   setTimeout(turnBoard, 4000);
 };
 
 const summary = () => {
-  const scoreNode = document.getElementById('score');
+  const scoreNode = document.getElementById(SCORE);
   let score = parseInt(scoreNode.textContent);
-  window.localStorage.setItem('score', score);
-  window.location.href = '/summary';
+  window.localStorage.setItem(SCORE, score);
+  window.location.href = SUMMARY;
 };
 
 const flipTile = tile => {
-  new Audio('../media/sounds/flip.mp3').play();
-  if (!tile.classList.contains('flip')) {
-    tile.classList.add('flip');
+  new Audio(flipSound).play();
+  if (!tile.classList.contains(FLIP)) {
+    tile.classList.add(FLIP);
   } else {
-    tile.classList.remove('flip');
+    tile.classList.remove(FLIP);
   }
 };
 
 const changeScore = change => {
-  const scoreNode = document.getElementById('score');
+  const scoreNode = document.getElementById(SCORE);
 
   let score = parseInt(scoreNode.textContent);
   score += change;
   scoreNode.textContent = score;
   if (score <= 0) {
-    window.localStorage.setItem('score', score);
-    window.location.href = '/summary';
+    window.localStorage.setItem(SCORE, score);
+    window.location.href = SUMMARY;
   }
 };
 
@@ -54,49 +60,51 @@ const isCorrect = tile => {
     tilesToPick.splice(tilesToPick.indexOf(parseInt(tile.id)), 1);
     changeScore(1);
   } else {
-    new Audio('../media/sounds/wrong.mp3').play();
-    tile.classList.add('incorrect');
+    new Audio(flipSound).play();
+    tile.classList.add(INCORRECT);
     changeScore(-1);
   }
 };
 
 const blankTiles = () => {
-  let tileList = document.getElementsByClassName('game-tile');
+  let tileList = document.getElementsByClassName(GAME_TILE);
   for (let i = 0; i < tileList.length; ++i) {
-    tileList[i].classList = 'game-tile start';
+    tileList[i].classList = GAME_TILE_START;
   }
 };
 
 const completeRound = () => {
   if (tilesToPick.length == 0) {
-    setTimeout(start, 500);
+    setTimeout(() => {
+      start(6, 6);
+    }, 500);
   }
 };
 
 const unflipAll = () => {
-  let tileList = document.getElementsByClassName('game-tile');
+  let tileList = document.getElementsByClassName(GAME_TILE);
   for (let i = 0; i < tileList.length; ++i) {
-    if (tileList[i].classList.contains('flip')) {
-      new Audio('../media/sounds/flip.mp3').play();
+    if (tileList[i].classList.contains(FLIP)) {
+      new Audio(flipSound).play();
     }
-    tileList[i].classList = 'game-tile';
+    tileList[i].classList = GAME_TILE;
     setTimeout(500);
   }
 };
 
 const turnBoard = () => {
-  let gameBoard = document.getElementById('game-board');
-  if (gameBoard.classList.contains('flip')) {
-    gameBoard.classList.remove('flip');
+  let gameBoard = document.getElementById(GAME_BOARD);
+  if (gameBoard.classList.contains(FLIP)) {
+    gameBoard.classList.remove(FLIP);
   } else {
-    gameBoard.classList.add('flip');
+    gameBoard.classList.add(FLIP);
   }
 };
 
-const patternPick = () => {
+const patternPick = numberToPick => {
   tilesToPick.length = 0;
-  let tileList = document.getElementsByClassName('game-tile');
-  for (let i = 0; i < 3; ++i) {
+  let tileList = document.getElementsByClassName(GAME_TILE);
+  for (let i = 0; i < numberToPick; ++i) {
     let index = Math.floor(Math.random() * tileList.length);
     while (tilesToPick.includes(index)) {
       index = Math.floor(Math.random() * tileList.length);
@@ -107,15 +115,16 @@ const patternPick = () => {
 };
 
 const draw = (x, y) => {
-  let gameBoard = document.getElementById('game-board');
+  let gameBoard = document.getElementById(GAME_BOARD);
   gameBoard.innerHTML = '';
-  gameBoard.style.width = `${115 * x}px`;
-  gameBoard.style.height = `${115 * y}px`;
+  gameBoard.style.width = `${81 * x + 20}px`;
+  gameBoard.style.height = `${81 * y + 20}px`;
+
   for (let i = 0; i < x * y; ++i) {
-    let tile = document.createElement('div');
+    let tile = document.createElement(DIV);
     tile.id = i;
-    tile.classList.add('game-tile');
-    tile.classList.add('start');
+    tile.classList.add(GAME_TILE);
+    tile.classList.add(START);
     tile.onclick = function() {
       isCorrect(this);
       flipTile(this);
