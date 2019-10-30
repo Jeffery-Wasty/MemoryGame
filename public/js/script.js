@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
-const flipSound = '../media/sounds/flip.mp3';
 const tilesToPick = [];
+const tilesLeft = [];
 const progression = [];
 
 window.onload = () => {
@@ -52,13 +52,17 @@ const progressGame = result => {
 
 const start = (x, y, z) => {
   progression.push([x, y, z]);
+  tilesLeft[0] = z;
+  document.getElementById(UNCOVER_COUNT).textContent = ' ' + z.toString() + ' ';
   draw(x, y);
+  document.getElementById(GAME_BOARD).style.pointerEvents = AUTO;
   setTimeout(unflipAll, 1000);
   setTimeout(() => {
     patternPick(z);
   }, 2000);
   changeTileCount(z);
   setTimeout(unflipAll, 3000);
+  increaseTrialCount();
   setTimeout(turnBoard, 4000);
 };
 
@@ -70,7 +74,7 @@ const summary = () => {
 };
 
 const flipTile = tile => {
-  new Audio(flipSound).play();
+  new Audio(FLIP_SOUND).play();
   if (!tile.classList.contains(FLIP)) {
     tile.classList.add(FLIP);
   } else {
@@ -103,11 +107,26 @@ const isCorrect = tile => {
   if (tilesToPick.includes(parseInt(tile.id))) {
     tilesToPick.splice(tilesToPick.indexOf(parseInt(tile.id)), 1);
     changeScore(1);
+    if (tilesToPick.length == 0) {
+      new Audio(FLIP_SOUND).play();
+      tile.classList.add(CORRECT);
+    }
   } else {
-    new Audio(flipSound).play();
+    new Audio(ERROR_SOUND).play();
     tile.classList.add(INCORRECT);
     changeScore(-1);
+    document.getElementById(UNCOVER_TEXT).style.display = BLOCK;
   }
+  tilesLeft[0] -= 1;
+  changeHintCount(-1);
+};
+
+const changeHintCount = change => {
+  const hintCount = document.getElementById(UNCOVER_COUNT);
+
+  let count = parseInt(hintCount.textContent);
+  count += change;
+  hintCount.textContent = ' ' + count.toString() + ' ';
 };
 
 const blankTiles = () => {
@@ -118,8 +137,17 @@ const blankTiles = () => {
   setTimeout(1000);
 };
 
+const increaseTrialCount = () => {
+  let trialNode = document.getElementById(TRIAL_COUNT);
+  let trial = parseInt(trialNode.textContent);
+
+  trial += 1;
+  trialNode.textContent = trial;
+};
+
 const completeRound = () => {
-  if (tilesToPick.length == 0) {
+  if (tilesLeft[0] == 0) {
+    document.getElementById(GAME_BOARD).style.pointerEvents = NONE;
     let tileList = document.getElementsByClassName(GAME_TILE);
     let newDims = 0;
     for (let i = 0; i < tileList.length; ++i) {
@@ -132,8 +160,6 @@ const completeRound = () => {
       newDims = progressGame(1);
     }
 
-    console.log(newDims);
-
     setTimeout(() => {
       start(newDims[0], newDims[1], newDims[2]);
     }, 2000);
@@ -144,7 +170,7 @@ const unflipAll = () => {
   let tileList = document.getElementsByClassName(GAME_TILE);
   for (let i = 0; i < tileList.length; ++i) {
     if (tileList[i].classList.contains(FLIP)) {
-      new Audio(flipSound).play();
+      new Audio(FLIP_SOUND).play();
     }
     tileList[i].classList = GAME_TILE;
     setTimeout(1000);
@@ -153,17 +179,10 @@ const unflipAll = () => {
 
 const turnBoard = () => {
   let gameBoard = document.getElementById(GAME_BOARD);
-  if (gameBoard.classList.contains(NINETY)) {
-    gameBoard.classList.remove(NINETY);
-    gameBoard.classList.add(ONE_EIGHTY);
-  } else if (gameBoard.classList.contains(ONE_EIGHTY)) {
-    gameBoard.classList.remove(ONE_EIGHTY);
-    gameBoard.classList.add(TWO_SEVENTY);
-  } else if (gameBoard.classList.contains(TWO_SEVENTY)) {
-    gameBoard.classList.remove(TWO_SEVENTY);
+  if (!gameBoard.classList.contains(NINETY)) {
     gameBoard.classList.add(NINETY);
   } else {
-    gameBoard.classList.add(NINETY);
+    gameBoard.classList.remove(NINETY);
   }
 };
 
@@ -185,12 +204,6 @@ const hideTile = () => {
   for (let i = 0; i < tileList.length; ++i) {
     if (tileList[i].classList.contains(FLIP_NINETY)) {
       tileList[i].classList.remove(FLIP_NINETY);
-      tileList[i].classList.add(FLIP_ONE_EIGHTY);
-    } else if (tileList[i].classList.contains(FLIP_ONE_EIGHTY)) {
-      tileList[i].classList.remove(FLIP_ONE_EIGHTY);
-      tileList[i].classList.add(FLIP_TWO_SEVENTY);
-    } else if (tileList[i].classList.contains(FLIP_TWO_SEVENTY)) {
-      tileList[i].classList.remove(FLIP_TWO_SEVENTY);
     } else {
       tileList[i].classList.add(FLIP_NINETY);
     }

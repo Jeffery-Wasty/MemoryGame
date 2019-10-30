@@ -14,11 +14,11 @@ script(src='js/summary-script.js' async='' defer='')
   form#summary-form.product-form(action='/score/add' method='POST')
     label#score-result(for='score')
       | Score
-    input#score-result-node(type='text' name='score' value='10' readonly='')
+    input#score(type='text' name='score' value='10' readonly='')
     label#name-tag(for='name') Name
-    input#name-field.form-fields.input(type='text' name='name')
+    input#name.form-fields.input(type='text' name='name' onchange='saveName()')
     .button-bar
-      button#submit-button.btn.btn-secondary.btn-lg(type='submit' onclick='saveName()')
+      button#submit-button.btn.btn-secondary.btn-lg(type='submit')
         | Submit Score
   button#restart-button.btn.btn-primary.btn-lg(type='text' onclick='redirect()')
-        | RESTART
+    | RESTART

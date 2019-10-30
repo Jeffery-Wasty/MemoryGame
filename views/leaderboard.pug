@@ -11,8 +11,13 @@ script(src='constants/script_constants.js' async='' defer='')
 script(src='js/leaderboard-script.js' async='' defer='')
 .leaderboard-box
   h1#high-score-banner= "High Scores"
-  #score-node
-  #name-node
+  .last-game#board
+    h3#current-user-score
+      | Your score
+    table.table.rank-table
+      tr.data-rows
+        td#name-node
+        td#score-node
   div#board
     table.table.rank-table
       tr.thead-dark

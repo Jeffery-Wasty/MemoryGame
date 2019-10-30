@@ -6,13 +6,13 @@ window.onload = () => {
 const readScore = () => {
   const scoreNodeSummary = document.getElementById('score-node');
   let score = window.localStorage.getItem('score');
-  scoreNodeSummary.value = score;
+  scoreNodeSummary.textContent = score;
 };
 
 const readName = () => {
   const nameNodeSummary = document.getElementById('name-node');
   let name = window.localStorage.getItem('name');
-  nameNodeSummary.value = name;
+  nameNodeSummary.textContent = name;
 };
 
 const redirect = () => {

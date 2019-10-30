@@ -35,12 +35,17 @@ body {
   transform: rotateZ(90deg);
 }
 
-#game-board.one-eighty {
-  transform: rotateZ(180deg);
+#uncover-text {
+  display: none;
+  margin-top: 1%;
+  text-align: center;
+  color: white;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 30px;
 }
 
-#game-board.two-seventy {
-  transform: rotateZ(270deg);
+#uncover-count {
+  display: inline;
 }
 
 #nav {
@@ -90,14 +95,6 @@ body {
   transform: rotateX(90deg);
 }
 
-.game-tile.flip-one-eighty {
-  transform: rotateX(180deg);
-}
-
-.game-tile.flip-two-seventy {
-  transform: rotateX(270deg);
-}
-
 .game-tile.flip {
   background-color: rgb(70, 154, 170);
   transform: rotateX(180deg);
@@ -106,6 +103,33 @@ body {
 .game-tile.incorrect {
   background-color: #ff3939;
   background-image: url('../media/icons/incorrect.png');
+  background-position: center;
+  background-size: cover;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-duration: 1s;
+  -moz-transition-property: -moz-transform;
+  -moz-transition-duration: 1s;
+  -webkit-animation-name: grow;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: grow;
+  -moz-animation-duration: 2s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+
+  transition-property: -moz-transform;
+  transition-duration: 1s;
+  animation-name: grow;
+  animation-duration: 0.2s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-direction: alternate;
+}
+
+.game-tile.correct {
+  background-color: #41ad49;
+  background-image: url('../media/icons/correct.png');
   background-position: center;
   background-size: cover;
   -webkit-transition-property: -webkit-transform;
@@ -183,7 +207,7 @@ body {
   width: 25%;
 }
 
-#score-result-node {
+#score {
   width: 50%;
   height: 50%;
   color: white;
@@ -197,7 +221,7 @@ body {
   width: 25%;
 }
 
-#name-field {
+#name {
   width: 50%;
   height: 50%;
   background-color: #dead7c;
@@ -210,17 +234,23 @@ body {
 }
 
 #restart-button {
-  margin: 5% 5% 0 0;
+  margin: 5% auto;
+  display: block;
 }
 
 #submit-button {
-  margin: 5% 0 0 5%;
+  margin: 10% 0 0 0;
 }
 
 /* Leaderboard Page */
 
 .leaderboard-box {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#current-user-score {
+  text-align: center;
+  color: white;
 }
 
 #high-score-banner {
