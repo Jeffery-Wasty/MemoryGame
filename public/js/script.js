@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const flipSound = '../media/sounds/flip.mp3';
 const tilesToPick = [];
 const progression = [];
@@ -179,7 +180,7 @@ const patternPick = numberToPick => {
   }
 };
 
-const hideTile = tile => {
+const hideTile = () => {
   let tileList = document.getElementsByClassName(GAME_TILE);
   for (let i = 0; i < tileList.length; ++i) {
     if (tileList[i].classList.contains(FLIP_NINETY)) {

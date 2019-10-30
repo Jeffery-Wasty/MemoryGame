@@ -3,9 +3,9 @@ body {
   background-image: url('../media/backgrounds/brown-background.jpg');
 }
 
-body.blur {
-  /* -webkit-filter: blur(5px) grayscale(90%); */
-}
+/* body.blur {
+  -webkit-filter: blur(5px) grayscale(90%);
+} */
 
 #prompt-modal {
   display: none;
