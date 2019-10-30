@@ -25,36 +25,41 @@
         action="/score/add"
         method="POST"
       >
-        <div id="score-result">
+        <label for="score" id="score-result">
           Score
-          <div id="score-result-node">10</div>
-        </div>
-        <label for="name">Name</label>
+        </label>
+        <input
+          type="text"
+          name="score"
+          id="score-result-node"
+          value="10"
+          readonly
+        />
+        <label for="name" id="name-tag">Name</label>
         <input
           class="form-fields input"
           type="text"
           id="name-field"
           name="name"
         />
+        <div class="button-bar">
+          <button
+            type="text"
+            id="restart-button"
+            class="btn btn-primary btn-lg"
+            onclick="redirect()"
+          >
+            RESTART
+          </button>
+          <button
+            type="submit"
+            id="submit-button"
+            class="btn btn-secondary btn-lg"
+          >
+            Submit Score
+          </button>
+        </div>
       </form>
-      <div class="button-bar">
-        <button
-          type="text"
-          id="restart-button"
-          class="btn btn-primary btn-lg"
-          onclick="redirect()"
-        >
-          RESTART
-        </button>
-        <button
-          type="submit"
-          id="submit-button"
-          class="btn btn-secondary btn-lg"
-        >
-          Submit Score
-        </button>
-      </div>
     </div>
-    <div class="artist-list" id="artist-list"></div>
   </body>
 </html>

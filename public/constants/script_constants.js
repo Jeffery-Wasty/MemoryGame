@@ -3,6 +3,7 @@ const DIV = 'div';
 const GAME_BOARD = 'game-board';
 const PROMPT_MODAL = 'prompt-modal';
 const GAME_TILE = 'game-tile';
+const NAME_FIELD = 'name-field';
 const SCORE = 'score';
 const TILE_COUNT = 'tile-count';
 
@@ -27,3 +28,4 @@ const START = 'start';
 /* Paths */
 const INDEX = '/';
 const SUMMARY = '/summary';
+const LEADERBOARD = '/leaderboard';

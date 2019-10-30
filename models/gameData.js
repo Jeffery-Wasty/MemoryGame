@@ -13,18 +13,32 @@ const scoreSchema = mongoose.Schema({
 
 const model = mongoose.model('Score', scoreSchema);
 
-const getAllScores = () => {
-  model.find({}, (err, scores) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(scores);
+const getTop5 = res => {
+  model.find(
+    {},
+    ['name', 'score'],
+    {
+      skip: 0,
+      limit: 5,
+      sort: {
+        score: -1
+      }
+    },
+    (err, scores) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.render('leaderboard', {
+          board: [scores[0], scores[1], scores[2], scores[3], scores[4]]
+        });
+      }
     }
-  });
+  );
 };
 
 const addScore = req => {
   let mod = new model();
+
   mod.name = req.body.name;
   mod.score = req.body.score;
 
@@ -38,6 +52,6 @@ const addScore = req => {
 
 module.exports = {
   model: model,
-  getall: getAllScores,
+  gettop: getTop5,
   add: addScore
 };

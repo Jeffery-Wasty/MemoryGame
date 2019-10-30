@@ -1,22 +1,20 @@
-const path = require('path');
 let Score = require('../models/gameData');
 
 const game = (req, res, next) => {
-  res.sendFile(path.join(__dirname, '../views', 'index.html'));
+  res.render('index', {});
 };
 
 const summary = (req, res, next) => {
-  res.sendFile(path.join(__dirname, '../views', 'summary.html'));
+  res.render('summary', {});
 };
 
 const leaderboard = (req, res, next) => {
-  Score.getall();
-  res.sendFile(path.join(__dirname, '../views', 'leaderboard.html'));
+  Score.gettop(res);
 };
 
 const postAddScore = (req, res, next) => {
   Score.add(req);
-  res.redirect(301, '/');
+  res.redirect(301, '/leaderboard');
 };
 
 module.exports = {

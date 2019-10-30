@@ -1,8 +1,10 @@
 const express = require('express');
 const path = require('path');
-let bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const app = express();
 const mongoose = require('mongoose');
+
+app.set('view engine', 'pug');
 
 mongoose.connect(
   'mongodb+srv://jeffw:uP3DZBaGTkTVg8N@cluster0-eqnvp.mongodb.net/test?retryWrites=true&w=majority',

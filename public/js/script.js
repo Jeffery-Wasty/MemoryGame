@@ -19,8 +19,6 @@ const startModal = mod => {
 };
 
 const progressGame = result => {
-  let pick = Math.floor(Math.random() * 2);
-
   if (progression.length == 0) {
     return;
   }
@@ -29,6 +27,14 @@ const progressGame = result => {
 
   let newDims = [];
 
+  if (last[0] == 5 && last[1] == 5 && result == -1) {
+    newDims = last;
+    newDims[2] = last[2] + result;
+    return newDims;
+  }
+
+  let pick = Math.floor(Math.random() * 2);
+
   if (pick == 0) {
     newDims = last;
     newDims[2] = last[2] + result;
@@ -36,17 +42,8 @@ const progressGame = result => {
   } else {
     pick = Math.floor(Math.random() * 2);
     newDims = last;
-    let newWidth = last[0] + result * pick;
-    let newHeight = last[1] + result * Math.abs(pick - 1);
-
-    if (newWidth > 7 || newWidth < 3) {
-      newDims[1] = last[1] + result;
-    } else if (newHeight > 7 || newHeight < 3) {
-      newDims[0] = last[0] + result;
-    } else {
-      newDims[0] = last[0] + result * pick;
-      newDims[1] = last[1] + result * Math.abs(pick - 1);
-    }
+    newDims[0] = last[0] + result * pick;
+    newDims[1] = last[1] + result * Math.abs(pick - 1);
 
     return newDims;
   }
@@ -84,6 +81,7 @@ const changeScore = change => {
   const scoreNode = document.getElementById(SCORE);
 
   let score = parseInt(scoreNode.textContent);
+
   score += change;
   scoreNode.textContent = score;
   if (score <= 0) {

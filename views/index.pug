@@ -1,0 +1,45 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  title
+  meta(name='description' content='')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  link(rel='stylesheet' href='css/styles.css')
+  link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous')
+script(src='constants/script_constants.js' async='' defer='')
+script(src='js/script.js' async='' defer='')
+#main-container
+  #nav
+    #nav-left
+      button#terminate-button.btn.btn-danger(onclick="promptModal('prompt-modal')")
+        | TERMINATE
+    #prompt-modal.modal(tabindex='-1' role='dialog')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            h5.modal-title Are you sure you want to terminate?
+            button.close(type='button' onclick="promptModal('prompt-modal')" data-dismiss='modal' aria-label='Close')
+              span(aria-hidden='true') &times;
+          .modal-footer
+            button.btn.btn-danger(type='button' onclick="promptModal('prompt-modal')" data-dismiss='modal')
+              | No
+            button.btn.btn-success(type='button' onclick='summary()')
+              | Yes
+    #nav-right
+      #tile-count-node.nav-sub
+        | TILES &nbsp;&nbsp;
+        #tile-count 3
+      #score-node.nav-sub
+        | SCORE &nbsp;&nbsp;
+        #score 0
+  #game-board.hidden
+#start-screen
+  #start-modal.modal(tabindex='-1' role='dialog')
+    .modal-dialog(role='document')
+      .modal-content
+        .modal-header
+          h5.modal-title Welcome to the Rotation Matrix Game!
+        .modal-footer
+          button.btn.btn-success(type='button' onclick="startModal('start-modal'), start(5,5,3)")
+            | Play

@@ -180,12 +180,21 @@ body.blur {
 
 #score-result {
   margin: 0 0 5% 0;
-  width: 100%;
+  width: 25%;
 }
 
 #score-result-node {
-  display: inline;
+  width: 50%;
+  height: 50%;
+  color: white;
+  background: transparent;
+  border: none;
   margin: 0 0 0 20%;
+  font-weight: 200;
+}
+
+#name-tag {
+  width: 25%;
 }
 
 #name-field {
@@ -206,4 +215,35 @@ body.blur {
 
 #submit-button {
   margin: 5% 0 0 5%;
+}
+
+/* Leaderboard Page */
+
+.leaderboard-box {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#high-score-banner {
+  text-align: center;
+  font-size: 50px;
+  color: white;
+  margin: 3% auto 0 auto;
+}
+
+#board {
+  width: 40%;
+  font-size: 25px;
+  margin: 5% auto 0 auto;
+}
+
+.rank-table {
+  background-color: #dead7c;
+}
+
+.data-rows {
+  color: black;
+}
+
+#leader-restart-button {
+  margin: 3% 0 0 0;
 }
