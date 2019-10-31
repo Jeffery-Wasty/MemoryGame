@@ -4,7 +4,7 @@
   "description": "Assignment for COMP 4711",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,8 @@
     "express": "^4.17.1",
     "mongoose": "^5.7.7",
     "body-parser": "^1.19.0",
-    "pug": "^2.0.4"
+    "pug": "^2.0.4",
+    "nodemon": "^1.19.4"
   },
   "devDependencies": {
     "eslint": "^6.6.0"
