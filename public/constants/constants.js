@@ -5,7 +5,10 @@ const GAME_BOARD = 'game-board';
 const PROMPT_MODAL = 'prompt-modal';
 const GAME_TILE = 'game-tile';
 const SCORE = 'score';
+const SCORE_NODE = 'score-node';
+const SCORE_COUNT = 'score-count';
 const NAME = 'name';
+const NAME_NODE = 'name-node';
 const TILE_COUNT = 'tile-count';
 
 /* Property values */
@@ -15,7 +18,6 @@ const AUTO = 'auto';
 const HIDDEN = 'hidden';
 
 /* Classes */
-const BLUR = 'blur';
 const FLIP = 'flip';
 const NINETY = 'ninety';
 const FLIP_NINETY = 'flip-ninety';

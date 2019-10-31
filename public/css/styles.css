@@ -3,10 +3,6 @@ body {
   background-image: url('../media/backgrounds/brown-background.jpg');
 }
 
-/* body.blur {
-  -webkit-filter: blur(5px) grayscale(90%);
-} */
-
 #prompt-modal {
   display: none;
   filter: none;
@@ -21,7 +17,7 @@ body {
   width: 200px;
   height: 200px;
   padding: 10px;
-  margin: auto;
+  margin: 5% auto auto auto;
   display: flex;
   flex-wrap: wrap;
   transition: all 1s ease;
@@ -102,81 +98,10 @@ body {
 
 .game-tile.incorrect {
   background-color: #ff3939;
-  background-image: url('../media/icons/incorrect.png');
-  background-position: center;
-  background-size: cover;
-  -webkit-transition-property: -webkit-transform;
-  -webkit-transition-duration: 1s;
-  -moz-transition-property: -moz-transform;
-  -moz-transition-duration: 1s;
-  -webkit-animation-name: grow;
-  -webkit-animation-duration: 2s;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-  -moz-animation-name: grow;
-  -moz-animation-duration: 2s;
-  -moz-animation-iteration-count: infinite;
-  -moz-animation-timing-function: linear;
-
-  transition-property: -moz-transform;
-  transition-duration: 1s;
-  animation-name: grow;
-  animation-duration: 0.2s;
-  animation-iteration-count: 1;
-  animation-timing-function: linear;
-  animation-direction: alternate;
 }
 
 .game-tile.correct {
   background-color: #41ad49;
-  background-image: url('../media/icons/correct.png');
-  background-position: center;
-  background-size: cover;
-  -webkit-transition-property: -webkit-transform;
-  -webkit-transition-duration: 1s;
-  -moz-transition-property: -moz-transform;
-  -moz-transition-duration: 1s;
-  -webkit-animation-name: grow;
-  -webkit-animation-duration: 2s;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-  -moz-animation-name: grow;
-  -moz-animation-duration: 2s;
-  -moz-animation-iteration-count: infinite;
-  -moz-animation-timing-function: linear;
-
-  transition-property: -moz-transform;
-  transition-duration: 1s;
-  animation-name: grow;
-  animation-duration: 0.2s;
-  animation-iteration-count: 1;
-  animation-timing-function: linear;
-  animation-direction: alternate;
-}
-
-@-webkit-keyframes grow {
-  from {
-    -webkit-transform: scale(1);
-  }
-  to {
-    -webkit-transform: scale(1.5);
-  }
-}
-@-moz-keyframes grow {
-  from {
-    -moz-transform: scale(1);
-  }
-  to {
-    -moz-transform: scale(1.5);
-  }
-}
-@keyframes grow {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.5);
-  }
 }
 
 /* Summary Page */
@@ -263,7 +188,7 @@ body {
 #board {
   width: 40%;
   font-size: 25px;
-  margin: 5% auto 0 auto;
+  margin: 3% auto 0 auto;
 }
 
 .rank-table {
@@ -275,5 +200,5 @@ body {
 }
 
 #leader-restart-button {
-  margin: 3% 0 0 0;
+  margin: 1% 0 0 0;
 }

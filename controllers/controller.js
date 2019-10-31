@@ -1,24 +1,40 @@
-let Score = require('../models/gameData');
+const score = require('../models/gameData');
 
-const game = (req, res) => {
+// index
+// Input: _req,res: request and response
+//
+// Render index page.
+const index = (_req, res) => {
   res.render('index', {});
 };
 
-const summary = (req, res) => {
+// summary
+// Input: _req,res: request and response
+//
+// Render summary page.
+const summary = (_req, res) => {
   res.render('summary', {});
 };
 
-const leaderboard = (req, res) => {
-  Score.gettop(res);
+// leaderboard
+// Input: _req,res: request and response
+//
+// Get top scores.
+const leaderboard = (_req, res) => {
+  score.gettop(res);
 };
 
+// postAddScore
+// Input: _req,res: request and response
+//
+// Read name,score from form, add to db, redirect to leaderboard
 const postAddScore = (req, res) => {
-  Score.add(req);
+  score.add(req);
   res.redirect(301, '/leaderboard');
 };
 
 module.exports = {
-  game: game,
+  index: index,
   summary: summary,
   leaderboard: leaderboard,
   postAddScore: postAddScore

@@ -1,20 +1,31 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 window.onload = () => {
   readScore();
 };
 
+// readScore
+//
+// Reads score from local storage, save into an element.
 const readScore = () => {
-  const scoreNodeSummary = document.getElementById(SCORE);
+  let scoreNodeSummary = document.getElementById(SCORE);
   let score = window.localStorage.getItem(SCORE);
+
   scoreNodeSummary.value = score;
 };
 
+// saveName
+//
+// Reads name from element, saves into local storage.
 const saveName = () => {
-  const nameNode = document.getElementById(NAME);
-  let name = nameNode.value;
-  window.localStorage.setItem(NAME, name);
+  let nameNode = document.getElementById(NAME);
+
+  window.localStorage.setItem(NAME, nameNode.value);
 };
 
+// redirect
+//
+// Redirect back to index.
 const redirect = () => {
   window.location.href = INDEX;
 };

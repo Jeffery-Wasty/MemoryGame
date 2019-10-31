@@ -11,8 +11,28 @@ const scoreSchema = mongoose.Schema({
   }
 });
 
-const model = mongoose.model('Score', scoreSchema);
+const model = mongoose.model('score', scoreSchema);
 
+// const getMostRecent = () => {
+//   model.find(
+//     {},
+//     ['_id'],
+//     { skip: 0, limit: 1, sort: { _id: -1 } },
+//     (err, scores) => {
+//       getMostRecent();
+//       if (err) {
+//         console.log(err);
+//       } else {
+//         console.log(scores[0]);
+//       }
+//     }
+//   );
+// };
+
+// getTop5
+// Input: res; response
+//
+// Gets the top 5 scores from the database.
 const getTop5 = res => {
   model.find(
     {},
@@ -25,6 +45,7 @@ const getTop5 = res => {
       }
     },
     (err, scores) => {
+      //getMostRecent();
       if (err) {
         console.log(err);
       } else {
@@ -36,6 +57,10 @@ const getTop5 = res => {
   );
 };
 
+// addScore
+// Input: req; request
+//
+// Adds a new name,score pair as a schema to the database.
 const addScore = req => {
   let mod = new model();
 

@@ -7,7 +7,7 @@ head
   meta(name='viewport' content='width=device-width, initial-scale=1')
   link(rel='stylesheet' href='css/styles.css')
   link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous')
-script(src='constants/script_constants.js' async='' defer='')
+script(src='constants/constants.js' async='' defer='')
 script(src='js/script.js' async='' defer='')
 #main-container
   #nav
@@ -24,7 +24,7 @@ script(src='js/script.js' async='' defer='')
           .modal-footer
             button.btn.btn-danger(type='button' onclick="promptModal('prompt-modal')" data-dismiss='modal')
               | No
-            button.btn.btn-success(type='button' onclick='summary()')
+            button.btn.btn-success(type='button' onclick='passScore()')
               | Yes
     #nav-right
       #tile-count-node.nav-sub
@@ -35,7 +35,7 @@ script(src='js/script.js' async='' defer='')
         #trial-count 0
       #score-node.nav-sub
         | SCORE &nbsp;&nbsp;
-        #score 0
+        #score-count 0
   #game-board.hidden
   #uncover-text
     | Keep clicking. You can uncover
