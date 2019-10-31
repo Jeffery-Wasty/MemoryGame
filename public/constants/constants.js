@@ -37,3 +37,5 @@ const LEADERBOARD = '/leaderboard';
 /* Sounds */
 const FLIP_SOUND = '../media/sounds/flip.mp3';
 const ERROR_SOUND = '../media/sounds/wrong.mp3';
+const CORRECT_SOUND = '../media/sounds/correct.mp3';
+const REFRESH_SOUND = '../media/sounds/finish.wav';

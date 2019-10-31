@@ -27,6 +27,7 @@ const start = (width, height, tiles) => {
   resetHelpText(tiles);
   draw(width, height);
   setTimeout(unflipAll, 1000);
+  new Audio(REFRESH_SOUND).play();
   setTimeout(() => {
     pickTiles(tiles);
   }, 2000);
@@ -90,6 +91,7 @@ const draw = (width, height) => {
     tile.onclick = function() {
       isCorrect(this);
       flipTile(this);
+      completeRound();
     };
     gameBoard.appendChild(tile);
   }
@@ -121,17 +123,18 @@ const isCorrect = tile => {
     tilesToPick.splice(tilesToPick.indexOf(parseInt(tile.id)), 1);
     changeScore(1);
     if (tilesToPick.length == 0) {
+      new Audio(CORRECT_SOUND).play();
       tile.classList.add(CORRECT);
-      completeRound();
     }
+    return;
   } else {
-    //new Audio(ERROR_SOUND).play();
+    new Audio(ERROR_SOUND).play();
     tile.classList.add(INCORRECT);
-    changeScore(-1);
     document.getElementById(UNCOVER_TEXT).style.display = BLOCK;
   }
   tilesLeft[0] -= 1;
   decreaseHintCount();
+  changeScore(-1);
 };
 
 // changeScore
@@ -145,7 +148,8 @@ const changeScore = change => {
   score += change;
   scoreNode.textContent = score;
   if (score <= 0) {
-    passScore();
+    document.getElementById(UNCOVER_TEXT).textContent = 'Sorry! Game over.';
+    setTimeout(passScore, 500);
   }
 };
 
@@ -188,23 +192,25 @@ const flipTile = tile => {
 //
 // Starts a new round. Clicking the board is disabled during this process.
 const completeRound = () => {
-  let tileList = document.getElementsByClassName(GAME_TILE);
-  let newDims = 0;
+  if (tilesToPick.length == 0) {
+    let tileList = document.getElementsByClassName(GAME_TILE);
+    let newDims = 0;
 
-  document.getElementById(GAME_BOARD).style.pointerEvents = NONE;
-  for (let i = 0; i < tileList.length; ++i) {
-    if (tileList[i].classList.contains(INCORRECT)) {
-      newDims = progressGame(-1);
-      break;
+    document.getElementById(GAME_BOARD).style.pointerEvents = NONE;
+    for (let i = 0; i < tileList.length; ++i) {
+      if (tileList[i].classList.contains(INCORRECT)) {
+        newDims = progressGame(-1);
+        break;
+      }
     }
-  }
-  if (newDims == 0) {
-    newDims = progressGame(1);
-  }
+    if (newDims == 0) {
+      newDims = progressGame(1);
+    }
 
-  setTimeout(() => {
-    start(newDims[0], newDims[1], newDims[2]);
-  }, 2000);
+    setTimeout(() => {
+      start(newDims[0], newDims[1], newDims[2]);
+    }, 2000);
+  }
 };
 
 // progressGame
