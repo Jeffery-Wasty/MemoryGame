@@ -2,7 +2,7 @@
   "name": "comp4711_assignment",
   "version": "1.0.0",
   "description": "Assignment for COMP 4711",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js"
   },
