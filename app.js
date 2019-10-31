@@ -19,4 +19,4 @@ app
   .use(bodyParser.json())
   .use(express.static(path.join(__dirname, 'public')))
   .use(routes)
-  .listen(3005);
+  .listen(process.env.PORT || 3005);
