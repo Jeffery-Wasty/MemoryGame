@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jeffery-Wasty/comp4711-assignment1.git"
+    "url": "git+https://github.com/Jeffery-Wasty/MemoryGame.git"
   },
   "author": "Jeff",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Jeffery-Wasty/comp4711-assignment1/issues"
+    "url": "https://github.com/Jeffery-Wasty/MemoryGame/issues"
   },
-  "homepage": "https://github.com/Jeffery-Wasty/comp4711-assignment1#readme",
+  "homepage": "http://ec2-52-11-46-166.us-west-2.compute.amazonaws.com:3005/",
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^5.7.7",
