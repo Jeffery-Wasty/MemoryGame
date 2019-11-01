@@ -13,22 +13,6 @@ const scoreSchema = mongoose.Schema({
 
 const model = mongoose.model('score', scoreSchema);
 
-// const getMostRecent = () => {
-//   model.find(
-//     {},
-//     ['_id'],
-//     { skip: 0, limit: 1, sort: { _id: -1 } },
-//     (err, scores) => {
-//       getMostRecent();
-//       if (err) {
-//         console.log(err);
-//       } else {
-//         console.log(scores[0]);
-//       }
-//     }
-//   );
-// };
-
 // getTop5
 // Input: res; response
 //
@@ -45,7 +29,6 @@ const getTop5 = res => {
       }
     },
     (err, scores) => {
-      //getMostRecent();
       if (err) {
         console.log(err);
       } else {
